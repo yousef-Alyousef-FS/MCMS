@@ -13,7 +13,7 @@
 1. تحميل المشروع:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/yousef-Alyousef-FS/MCMS
 cd medical_center
 ```
 
