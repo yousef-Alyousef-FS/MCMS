@@ -1,0 +1,33 @@
+{
+  "app": {
+    "name": "Medical Center",
+    "tagline": "Your health is our priority and your comfort is our goal"
+  },
+  "common": {
+    "retry": "Try again",
+    "coming_soon": "Coming soon"
+  },
+  "onboarding": {
+    "page_one_title": "Book your appointment easily",
+    "page_one_body": "Choose the specialty, doctor, and suitable time, then manage and reschedule your upcoming appointments in one place.",
+    "page_two_title": "Your medical record in your hands",
+    "page_two_body": "Review your previous visits, diagnoses, and medical notes shared by your care team.",
+    "page_three_title": "Labs, images, and prescriptions in one place",
+    "page_three_body": "View lab results, medical images, prescriptions, and notes related to each visit.",
+    "skip": "Skip",
+    "next": "Next",
+    "start": "Get Started"
+  },
+  "nav": {
+    "home": "Home",
+    "appointments": "Appointments",
+    "records": "Medical Record",
+    "profile": "Profile"
+  },
+  "home": {
+    "greeting": "Welcome 👋",
+    "empty_state": "Start by booking an appointment or reviewing your medical record.",
+    "toggle_language": "Change language",
+    "toggle_theme": "Toggle theme"
+  }
+}
