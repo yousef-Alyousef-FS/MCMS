@@ -5,11 +5,279 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/auth/login": {
+      "post": {
+        "tags": ["Authentication"],
+        "parameters": [
+          {
+            "name": "X-Device-Name",
+            "in": "header",
+            "description": "Optional header for Mobile apps (Flutter) to explicitly send device name (e.g., 'Samsung S23')",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponseDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponseDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/signup": {
+      "post": {
+        "tags": ["Authentication"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignupRequestDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignupRequestDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignupRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponseDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponseDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponseDTO"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/refresh": {
+      "post": {
+        "tags": ["Authentication"],
+        "parameters": [
+          {
+            "name": "X-Device-Name",
+            "in": "header",
+            "description": "Optional header for Mobile apps (Flutter) to explicitly send device name (e.g., 'Samsung S23')",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshRequestDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshRequestDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponseDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponseDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponseDTO"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/auth/logout": {
+      "post": {
+        "tags": ["Authentication"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogoutRequestDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogoutRequestDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogoutRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/patients": {
       "post": {
-        "tags": [
-          "Patients"
-        ],
+        "tags": ["Patients"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -76,9 +344,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Patients"
-        ],
+        "tags": ["Patients"],
         "operationId": "GetAllPatients",
         "parameters": [
           {
@@ -140,9 +406,7 @@
     },
     "/api/patients/{id}": {
       "get": {
-        "tags": [
-          "Patients"
-        ],
+        "tags": ["Patients"],
         "parameters": [
           {
             "name": "id",
@@ -181,9 +445,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Patients"
-        ],
+        "tags": ["Patients"],
         "parameters": [
           {
             "name": "id",
@@ -278,9 +540,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Patients"
-        ],
+        "tags": ["Patients"],
         "parameters": [
           {
             "name": "id",
@@ -321,9 +581,7 @@
     },
     "/api/patients/quick-search": {
       "get": {
-        "tags": [
-          "Patients"
-        ],
+        "tags": ["Patients"],
         "parameters": [
           {
             "name": "SearchTerm",
@@ -400,9 +658,7 @@
     },
     "/api/patients/advanced-search": {
       "get": {
-        "tags": [
-          "Patients"
-        ],
+        "tags": ["Patients"],
         "parameters": [
           {
             "name": "NationalID",
@@ -535,9 +791,7 @@
     },
     "/api/patients/hard/{id}": {
       "delete": {
-        "tags": [
-          "Patients"
-        ],
+        "tags": ["Patients"],
         "parameters": [
           {
             "name": "id",
@@ -578,9 +832,7 @@
     },
     "/api/persons/{id}": {
       "get": {
-        "tags": [
-          "Persons"
-        ],
+        "tags": ["Persons"],
         "operationId": "GetPerson",
         "parameters": [
           {
@@ -620,9 +872,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Persons"
-        ],
+        "tags": ["Persons"],
         "parameters": [
           {
             "name": "id",
@@ -737,11 +987,10 @@
         }
       }
     },
-    "/api/persons/national-id/{nationalId}": {
+    "/api/persons/national/{nationalId}": {
       "get": {
-        "tags": [
-          "Persons"
-        ],
+        "tags": ["Persons"],
+        "operationId": "GetPersonByNationalId",
         "parameters": [
           {
             "name": "nationalId",
@@ -781,9 +1030,7 @@
     },
     "/api/persons/GetAllPersons": {
       "get": {
-        "tags": [
-          "Persons"
-        ],
+        "tags": ["Persons"],
         "parameters": [
           {
             "name": "PageNumber",
@@ -868,9 +1115,7 @@
     },
     "/api/persons": {
       "post": {
-        "tags": [
-          "Persons"
-        ],
+        "tags": ["Persons"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1079,11 +1324,6 @@
             "type": "string",
             "nullable": true
           },
-          "email": {
-            "type": "string",
-            "format": "email",
-            "nullable": true
-          },
           "address": {
             "maxLength": 250,
             "type": "string",
@@ -1281,6 +1521,34 @@
         },
         "additionalProperties": false
       },
+      "LoginRequestDTO": {
+        "type": "object",
+        "properties": {
+          "userNameOrEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LogoutRequestDTO": {
+        "type": "object",
+        "properties": {
+          "userNameOrEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "PatientSearchResponseDTO": {
         "type": "object",
         "properties": {
@@ -1301,10 +1569,6 @@
             "nullable": true
           },
           "phoneNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
             "type": "string",
             "nullable": true
           },
@@ -1399,77 +1663,60 @@
             "nullable": true
           }
         },
-        "additionalProperties": { }
+        "additionalProperties": {}
       },
-      "UpdatePatientRequestDTO": {
-        "required": [
-          "address",
-          "dateOfBirth",
-          "firstName",
-          "gender",
-          "lastName",
-          "middleName",
-          "nationalID",
-          "phoneNumber"
-        ],
+      "RefreshRequestDTO": {
         "type": "object",
         "properties": {
-          "nationalID": {
-            "maxLength": 20,
-            "minLength": 1,
-            "type": "string"
-          },
-          "firstName": {
-            "maxLength": 50,
-            "minLength": 1,
-            "type": "string"
-          },
-          "middleName": {
-            "maxLength": 50,
-            "minLength": 1,
-            "type": "string"
-          },
-          "lastName": {
-            "maxLength": 50,
-            "minLength": 1,
-            "type": "string"
-          },
-          "dateOfBirth": {
+          "refreshToken": {
             "type": "string",
-            "format": "date-time"
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SignupRequestDTO": {
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string",
+            "nullable": true
           },
-          "gender": {
+          "personID": {
             "type": "integer",
             "format": "int32"
           },
-          "phoneNumber": {
-            "maxLength": 15,
-            "minLength": 1,
-            "type": "string"
-          },
-          "address": {
-            "maxLength": 250,
-            "minLength": 1,
-            "type": "string"
-          },
-          "emergencyContact": {
-            "maxLength": 15,
-            "type": "string",
-            "nullable": true
-          },
           "email": {
             "type": "string",
-            "format": "email",
             "nullable": true
           },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TokenResponseDTO": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdatePatientRequestDTO": {
+        "type": "object",
+        "properties": {
           "bloodType": {
             "type": "integer",
             "format": "int32",
-            "nullable": true
-          },
-          "job": {
-            "maxLength": 50,
-            "type": "string",
             "nullable": true
           }
         },
@@ -1477,58 +1724,6 @@
       },
       "UpdatePatientResponseDTO": {
         "type": "object",
-        "properties": {
-          "patientID": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "fullName": {
-            "type": "string",
-            "nullable": true
-          },
-          "age": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "nationalID": {
-            "type": "string",
-            "nullable": true
-          },
-          "phoneNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "emergencyContact": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "address": {
-            "type": "string",
-            "nullable": true
-          },
-          "dateOfBirth": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "gender": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "bloodType": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "job": {
-            "type": "string",
-            "nullable": true
-          }
-        },
         "additionalProperties": false
       },
       "UpdatePersonRequestDTO": {
@@ -1585,11 +1780,6 @@
             "type": "string",
             "nullable": true
           },
-          "email": {
-            "type": "string",
-            "format": "email",
-            "nullable": true
-          },
           "jobTitle": {
             "maxLength": 100,
             "type": "string",
@@ -1625,10 +1815,6 @@
             "type": "string",
             "nullable": true
           },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
           "address": {
             "type": "string",
             "nullable": true
@@ -1649,16 +1835,29 @@
         "additionalProperties": false
       },
       "enGender": {
-        "enum": [
-          0,
-          1
-        ],
+        "enum": [0, 1],
         "type": "integer",
         "format": "int32"
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Enter: Bearer {your JWT token}",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
     }
   },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ],
   "tags": [
+    {
+      "name": "Authentication"
+    },
     {
       "name": "Patients"
     },

@@ -65,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     _startNavigation(composition.duration);
                   },
                   errorBuilder: (context, error, stackTrace) {
-                    _startNavigation(const Duration(seconds: 5));
+                    _startNavigation(const Duration(seconds: 3));
                     return Container(
                       width: 92,
                       height: 92,
